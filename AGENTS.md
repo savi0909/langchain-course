@@ -3,8 +3,8 @@
 This workspace supports Abhishek's study of Eden Marco's Udemy course at
 https://www.udemy.com/course/langchain/.
 The local course repository is `D:/AA-PYTHON/langchain-course`.
-Active exercise branch: `project/hello-world` (selected by the user on 2026-11-08).
-Keep this branch active for Hello World study; do not switch back to `main` automatically.
+Preferred exercise branch: `project/hello-world` (selected by the user on 2026-11-08).
+`main` is the course index; use `project/hello-world` for Hello World study. Inspect the actual branch before acting; do not switch branches automatically on startup.
 
 ## Start of each session
 
@@ -18,6 +18,7 @@ Keep this branch active for Hello World study; do not switch back to `main` auto
 - Study mode chosen 2026-11-08: teach from first principles while the user also learns Python. Follow `LEARNING_PLAN.md` sequentially, one small lesson at a time. Explain new syntax and motivation, demonstrate a small example, then invite one prediction or exercise. Check understanding before advancing; do not infer mastery from an explanation alone.
 
 - Help with course concepts, exercises, debugging and implementation in the context of the user's current request.
+- Use Google Gemini for this user's examples, through `langchain-google-genai` / `ChatGoogleGenerativeAI`. Current Hello World model: `gemini-3.5-flash-lite`. Load `GOOGLE_API_KEY` from local `.env`; no OpenAI key is required. `LLM_PROVIDER` is not read by the example. Print `response.text` for readable output. OpenAI/Ollama packages are optional and are still declared until explicitly removed.
 - Follow the lecture or supplied material when available. Distinguish course examples from optional extensions and current library changes.
 - Do not infer completed lectures, proficiency, enrollment, repository URLs or installed versions.
 - Verify version-sensitive API guidance against installed dependencies and official framework documentation when needed.
@@ -32,6 +33,7 @@ Keep this branch active for Hello World study; do not switch back to `main` auto
 - Save reusable course notes under `notes/` as they are produced. Use `work/` for temporary files.
 - Never store API keys, passwords, tokens or raw private transcripts in memory; record only variable names or safe setup instructions.
 - These files provide workspace-local continuity; do not claim account-wide saved memory has changed.
+- Maintain identical master copies of `AGENTS.md`, `PROJECT_CONTEXT.md`, `LEARNING_PLAN.md` and `memory/STATE.md` on local `main` and `project/hello-world`, as requested on 2026-11-08. Synchronize documentation changes to both branches while preserving unrelated source changes. This is a manual synchronization convention, not an automatic background job; do not claim later edits synchronize themselves. Do not copy exercise source onto `main` as part of documentation synchronization.
 
 ## Windows coexistence
 

@@ -37,26 +37,50 @@ so future Codex sessions in this workspace can resume with relevant context.
 | `notes/` | Course notes, created when needed |
 | `work/` | Scratch files and intermediate work |
 
-## Current boundaries
+## Gemini configuration and validation
 
-Active exercise branch: `project/hello-world`, checked out at the user's request
+Provider preference (2026-11-08): the user has a Google Gemini API key and no
+OpenAI key. Use Gemini for course examples when implementation is requested.
+No key values were requested or stored. `main.py` now uses ChatGoogleGenerativeAI
+with `gemini-3.5-flash-lite` and loads `GOOGLE_API_KEY` through dotenv. The existing
+Gemini dependency and lockfile changes were preserved; `uv sync --locked` passed.
+Offline syntax, import, model construction and chain construction checks passed.
+The user supplied successful Gemini output, confirming a working call in their
+environment. The assistant has only performed offline checks. Display now uses
+`response.text` to omit structured block metadata. When both key aliases are set,
+the application retains `GOOGLE_API_KEY` and removes the redundant alias only
+from its process environment, avoiding the SDK warning. Persistent key settings
+are unchanged. Offline verification covered both key configurations and output formats.
+
+Preferred exercise branch: `project/hello-world`, selected at the user's request
 on 2026-11-08 (the user called it "Hello Test World"). Baseline commit: `2ea5ad8`.
-Context, memory and the learning plan are saved locally on this branch.
+These four master documents are maintained identically on local `main` and
+`project/hello-world`: `AGENTS.md`, `PROJECT_CONTEXT.md`, `LEARNING_PLAN.md`, and
+`memory/STATE.md`. Check the actual branch rather than treating this shared
+document as evidence of checkout state. Synchronization is manual; no background
+automation or push is implied. Source code remains specific to its project branch.
 Its README is empty. `main.py` contains a person-summary chain using a prompt
-template and ChatOpenAI; an Ollama alternative is commented out.
+template and ChatGoogleGenerativeAI; unused OpenAI and Ollama imports were removed.
 `pyproject.toml` requires Python >=3.11 and declares LangChain >=0.3.27;
 `.python-version` specifies 3.11. These are file declarations, not verified runtime
-versions. No application run, installation or model call has been performed.
+versions. Dependencies have been synchronized; the user has run the application
+successfully. No live model call was made by the assistant.
+
+`LLM_PROVIDER` is not used by this example. `langchain-openai` and
+`langchain-ollama` are still listed in the Hello World manifest, but are not used
+by the current source. Ollama is an optional local-model alternative; neither
+integration is required for Gemini. Removal was explained but not performed.
+
+## Course orientation and remaining unknowns
 
 User instruction added 2026-11-08: safely check out the course repository's `main`
 branch and review its README. Repository: `D:/AA-PYTHON/langchain-course`.
 Verified on 2026-11-08: already on `main`, tracking `origin/main`, at commit
 `0880469`. README reviewed from local disk. All project files now belong in this repository.
 
-Current lecture, completed sections and package versions are unknown. A `.venv`
-directory exists in the course repository, but its contents and runtime have not
-been verified. No dependencies were installed. Paid lecture contents and personal
-Udemy progress were not accessed.
+Current lecture, completed sections and exact installed package versions are
+not recorded. A `.venv` exists and offline imports/construction checks passed.
+Paid lecture contents and personal Udemy progress were not accessed.
 
 ## README review — 2026-11-08
 

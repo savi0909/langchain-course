@@ -8,14 +8,18 @@ Last updated: 2026-11-08 (Asia/Calcutta).
 - Current lecture / section: unknown.
 - Completed course work: not reported.
 - Code repository: `D:/AA-PYTHON/langchain-course` (user-provided).
-- Branch: `project/hello-world`, selected by the user on 2026-11-08; baseline commit `2ea5ad8`, tracking `origin/project/hello-world`.
+- Preferred exercise branch: `project/hello-world`, selected by the user on 2026-11-08; baseline commit `2ea5ad8`. `main` remains the course index. This shared memory describes both branches; inspect Git for the actual checkout state.
 - README: `main` course index previously reviewed at `0880469`; Hello World branch README is empty.
-- Source: `main.py` contains a person-summary prompt-to-model chain. Active provider is ChatOpenAI; Ollama alternative is commented out. Code not executed.
+- Hello World source: `main.py` contains a person-summary chain using ChatGoogleGenerativeAI with `gemini-3.5-flash-lite`. Unused OpenAI/Ollama imports were removed. User supplied successful Gemini output; assistant checks were offline only.
 - Project declarations: Python >=3.11; `.python-version` is 3.11; dependency lower bound LangChain >=0.3.27. Installed versions remain unverified.
 - Local branches observed: `main`, `project/hello-world`.
-- Environment: `.venv` directory exists; runtime and dependency versions remain unverified. Untracked `.env` and `.idea/` were preserved; secrets were not read.
+- Environment: `.venv` synchronized with `uv sync --locked`; imports and model/chain construction passed offline checks. Exact installed versions are not recorded. `.env` remains ignored; `.idea/` is untracked. No key values are stored here.
 - Blockers: none for context setup; lecture information is needed to identify where to resume study.
 - Study mode: first principles, Python learner, sequential lessons with a small example and one understanding check before advancing.
+- Provider preference: Google Gemini; user already has a Gemini API key and no OpenAI key. User subsequently authorized the source update. Uses `GOOGLE_API_KEY` loaded through dotenv; no secret values read or stored in this task.
+- Configuration: `LLM_PROVIDER` is not read. `response.text` prints readable text. If both key aliases exist, Hello World removes `GEMINI_API_KEY` only from its own process when `GOOGLE_API_KEY` is nonempty. `.env` has a `GOOGLE_API_KEY` entry; persistent environment settings are unchanged.
+- Dependencies: OpenAI/Ollama integrations are still declared but unused; removal has not been performed.
+- Master documentation: keep these four files identical on local `main` and `project/hello-world`: `AGENTS.md`, `PROJECT_CONTEXT.md`, `LEARNING_PLAN.md`, `memory/STATE.md`. Synchronization is manual, with no background job or automatic push.
 - Plan: `LEARNING_PLAN.md`; Python foundations added before the README Learning Path.
 - Current tutoring step: 0, lesson 1 (program execution, values, assignment and print); introduced, understanding not yet assessed.
 - Next step: review the learner's prediction for the assignment example, then adjust the Python starting level.
@@ -35,6 +39,12 @@ Last updated: 2026-11-08 (Asia/Calcutta).
 - Prior programming experience beyond learning Python is unknown.
 
 ## Session history
+
+- 2026-11-08: User requested identical master context on `main` and `project/hello-world`, emphasizing Gemini instead of OpenAI. Updated all four master files to describe Gemini, current output/key handling, optional integrations and shared branch policy. Documentation is synchronized independently of the uncommitted Hello World source/dependency changes.
+
+- 2026-11-08: User reported a successful Gemini run with a duplicate-key warning and raw content blocks. Changed `print(response.content)` to `print(response.text)`. After dotenv loading, the program drops the redundant `GEMINI_API_KEY` alias from its own process when `GOOGLE_API_KEY` is nonempty, preserving SDK precedence and Gemini-only fallback without changing the user's persistent environment or `.env`. Offline checks passed for both-key selection, Gemini-only fallback, string responses and structured text blocks. No live API request made for this fix. An initial check cleared Windows system environment variables and failed SSL initialization; preserving those variables corrected the test harness.
+
+- 2026-11-08: Updated the Hello World source to Gemini at the user's request. Preserved pre-existing Gemini manifest/lockfile changes. `uv sync --locked`, offline Python syntax/import/model/chain construction, and `git diff --check` passed. Used a dummy key for constructor verification; no API calls or live credential checks. Changes remain uncommitted.
 
 - 2026-11-08: Interpreted "Hello Test World" as the existing `project/hello-world` branch and switched safely. Preserved all context files and existing local files. Reviewed the empty branch README, Python version declaration, dependency manifest and source without reading secrets or executing the app. Saved context and plan as a local branch commit; no push requested.
 

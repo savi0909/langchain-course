@@ -31,6 +31,14 @@ repository or treating it as the Ice Breaker implementation.
 
 ## Lesson rhythm
 
+Provider throughout this plan: **Google Gemini**, using `ChatGoogleGenerativeAI`
+from `langchain-google-genai`. Start with `gemini-3.5-flash-lite` and
+`GOOGLE_API_KEY` in local `.env`; an OpenAI key is unnecessary. Teach dotenv,
+imports, model construction, prompt composition, `invoke`, and `response.text`
+incrementally. `LLM_PROVIDER` is not currently used. OpenAI and Ollama are optional
+alternatives, not prerequisites. The user has already demonstrated a successful
+Gemini call; this does not establish understanding of the Python or chain.
+
 1. State one concrete goal and why it matters.
 2. Explain the mechanism from familiar concepts; define each new term.
 3. Walk through a small example and explain unfamiliar Python syntax.
@@ -51,7 +59,7 @@ or mastery is claimed until observed.
 
 ## Repository practice
 
-Active branch: `project/hello-world`, chosen on 2026-11-08. Its source is available
+Preferred exercise branch: `project/hello-world`, chosen on 2026-11-08. Its source is available
 for study, but Python foundations remain the current lesson until the user is
 ready to advance. Review `main.py` incrementally when introducing Hello World;
 the branch README is empty. The branch requires Python >=3.11, which takes
@@ -61,3 +69,7 @@ Orientation on `main` and README review are complete. Inspect the appropriate pr
 branch and dependencies when beginning a project. Preserve untracked `.env` and
 `.idea/`; never display secrets. Avoid dependency installation and paid model calls
 until they serve the current lesson. No desktop automation is needed.
+
+This plan and the other three master context files must have identical committed
+contents on local `main` and `project/hello-world`. Synchronize future documentation
+updates deliberately; source code and dependency manifests remain branch-specific.
