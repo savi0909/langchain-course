@@ -1,9 +1,14 @@
+import os
+
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
-from langchain_ollama import ChatOllama
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
+
+# Use Google's primary key name when both aliases are present in this process.
+if os.getenv("GOOGLE_API_KEY"):
+    os.environ.pop("GEMINI_API_KEY", None)
 
 
 def main():
@@ -30,12 +35,12 @@ Musk's political activities, views, and statements have made him a polarizing fi
         input_variables=["information"], template=summary_template
     )
 
-    # llm = ChatOllama(temperature=0, model="gemma3:270m")
-    llm = ChatOpenAI(temperature=0, model="gpt-5")
+    # Reads GOOGLE_API_KEY from the environment loaded by load_dotenv().
+    llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash-lite")
     chain = summary_prompt_template | llm
 
     response = chain.invoke(input={"information": information})
-    print(response.content)
+    print(response.text)
 
 if __name__ == "__main__":
     main()
