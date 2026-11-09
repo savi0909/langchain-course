@@ -28,13 +28,13 @@ This branch (`project/search-agent`) demonstrates how to build search agents usi
 2. Set up environment variables:
    ```bash
    # Create a .env file with:
-   OPENAI_API_KEY=your_openai_key
+   GOOGLE_API_KEY=your_google_api_key
    TAVILY_API_KEY=your_tavily_key
    ```
 
 3. Run the agent:
    ```bash
-   python main.py
+   uv run python main.py
    ```
 
 ## Example Query

@@ -1,13 +1,16 @@
+import os
 from typing import List
 
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 load_dotenv()
+if os.getenv("GOOGLE_API_KEY"):
+    os.environ.pop("GEMINI_API_KEY", None)
+
 from langchain.agents import create_agent
-from langchain.tools import tool
 from langchain_core.messages import HumanMessage
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_tavily import TavilySearch
 
 
@@ -26,7 +29,7 @@ class AgentResponse(BaseModel):
     )
 
 
-llm = ChatOpenAI(model="gpt-5")
+llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash-lite")
 tools = [TavilySearch()]
 agent = create_agent(model=llm, tools=tools, response_format=AgentResponse)
 
@@ -36,7 +39,7 @@ def main():
     result = agent.invoke(
         {
             "messages": HumanMessage(
-                content="search for 3 job postings for an ai engineer using langchain in the bay area on linkedin and list their details?"
+                content="search for top 3 restaurants in bengaluru india?"
             )
         }
     )
